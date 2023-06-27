@@ -31,8 +31,13 @@ const App = () => {
           return task;
         }
       })
-    }
-    )
+    })
+  }
+
+  const deleteTask = (id) => {
+    setTasksData(tasksData => {
+      return tasksData.filter((task) => task.id !== id);
+    })
   }
 
   return (
@@ -41,7 +46,11 @@ const App = () => {
         <h1>Ada&apos;s Task List</h1>
       </header>
       <main>
-        <div>{<TaskList tasks={tasksData} updateTask={(id) => updateTask(id)} />}</div>
+        <div>{<
+          TaskList tasks={tasksData}
+          updateTask={(id) => updateTask(id)}
+          deleteTask={(id) => deleteTask(id)}
+        />}</div>
       </main>
     </div>
   );
