@@ -1,5 +1,6 @@
 import React from 'react';
 import TaskList from './components/TaskList.js';
+import TaskForm from './components/TaskForm.js';
 import './App.css';
 import { useState } from 'react';
 
@@ -40,14 +41,22 @@ const App = () => {
     })
   }
 
+  const addTask = (newFormData) => {
+    setTasksData([...tasksData, newFormData])
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>Ada&apos;s Task List</h1>
       </header>
       <main>
+        <div>
+          <TaskForm addTask={addTask} />
+        </div>
         <div>{<
-          TaskList tasks={tasksData}
+          TaskList
+          tasks={tasksData}
           updateTask={(id) => updateTask(id)}
           deleteTask={(id) => deleteTask(id)}
         />}</div>
